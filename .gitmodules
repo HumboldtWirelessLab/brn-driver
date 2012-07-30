@@ -1,0 +1,12 @@
+[submodule "madwifi-brn"]
+	path = madwifi-brn
+	url = git@gitsar:madwifi-brn
+[submodule "openbeacon-brn"]
+	path = openbeacon-brn
+	url = git@gitsar:openbeacon-brn
+[submodule "gumstix-brn"]
+	path = gumstix-brn
+	url = git@gitsar:gumstix-brn
+[submodule "calradio-brn"]
+	path = calradio-brn
+	url = git@gitsar:calradio-brn
