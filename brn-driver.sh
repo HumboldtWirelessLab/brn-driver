@@ -44,9 +44,9 @@ if [ "x$1" = "xbuild-modules" ]; then
 
   case "$DRIVER" in
     "madwifi")
-      if [ -e $KERNELDIR ]; then
+      if [ -e $KERNELPATH ]; then
         echo "Build $DRIVER for $ARCH"
-        (cd madwifi-brn; make clean; make -j 4 KERNELPATH=$KERNELDIR ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
+        (cd madwifi-brn; make clean; make -j 4 KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
         if [ ! -e $TARGETDIR ]; then
           mkdir -p $TARGETDIR
         fi
@@ -54,9 +54,9 @@ if [ "x$1" = "xbuild-modules" ]; then
       fi
       ;;
     "ath")
-      if [ -e $KERNELDIR ]; then
+      if [ -e $KERNELPATH ]; then
         echo "Build $DRIVER for $ARCH"
-        (cd compat-wireless-brn; KERNELDIR=$KERNELDIR ARCH=$ARCH COMPILER_PREFIX=$COMPILER_PREFIX ./wifidriver.sh build)
+        (cd compat-wireless-brn; KERNELPATH=$KERNELPATH ARCH=$ARCH COMPILER_PREFIX=$COMPILER_PREFIX ./wifidriver.sh build)
         if [ ! -e $TARGETDIR ]; then
           mkdir -p $TARGETDIR
         fi

@@ -52,8 +52,8 @@ case "$1" in
             (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; make KLIB=$KERNELPATH KLIB_BUILD=$KERNELPATH)
           fi
 
-	else 
-          (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; KERNELPATH=$KERNELDIR ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX sh ./make_mips.sh)
+	else
+          (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX sh ./make_mips.sh)
 	fi
         ;;
     "pull")
