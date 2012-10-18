@@ -4,7 +4,7 @@ echo "Get submodules"
 SUBMODULE=`git submodule | awk '{print $2}'`
 
 if [ "x$1" = "xtest" ]; then
-  $0 init
+  sh $0 init
   (cd madwifi-brn; make)
   if [ $? -ne 0 ]; then
     echo "Madwifi failed"
