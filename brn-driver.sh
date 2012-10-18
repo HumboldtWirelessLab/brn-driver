@@ -5,7 +5,7 @@ SUBMODULE=`git submodule | awk '{print $2}'`
 
 if [ "x$1" = "xtest" ]; then
   sh $0 init
-  (cd madwifi-brn; make)
+  (cd madwifi-brn; make clean; make)
   if [ $? -ne 0 ]; then
     echo "Madwifi failed"
     exit 1
@@ -19,7 +19,7 @@ fi
 
 if [ "x$1" = "xinit" ]; then
   echo "brn-driver"
-  git submodule init
+  for i in $SUBMODULE; do SI=0; if [ ! -e $SUBMODULE/.git ] && [ $SI -eq 0 ]; then git submodule init; SI=1; fi; done
   git submodule update
   for i in $SUBMODULE; do echo $i; (cd $i; git checkout master); done
   (cd compat-wireless-brn/brn-linux-next; git checkout brn-master)
