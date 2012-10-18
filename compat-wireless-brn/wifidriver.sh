@@ -45,7 +45,13 @@ case "$1" in
         (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; ./scripts/admin-refresh.sh)
         (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; ./scripts/driver-select ath)
 	if [ "x$NOCROSS" = "x1" ]; then
-          (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; make)
+
+	  if [ "x$KERNELPATH" = "x" ]; then
+            (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; make)
+          else
+            (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; make KLIB=$KERNELPATH KLIB_BUILD=$KERNELPATH)
+          fi
+
 	else 
           (export GIT_COMPAT_TREE=$DIR/brn-compat; export GIT_TREE=$DIR/brn-linux-next; cd brn-compat-wireless-2.6/; sh ./make_mips.sh)
 	fi

@@ -10,7 +10,7 @@ if [ "x$1" = "xtest" ]; then
     echo "Madwifi failed"
     exit 1
   fi
-  (cd compat-wireless-brn; NOCROSS=1 ./wifidriver.sh build)
+  (cd compat-wireless-brn; NOCROSS=1 KERNELPATH=/usr/src/linux-headers-2.6.32-30-generic ./wifidriver.sh build)
   if [ $? -ne 0 ]; then
     echo "compat-wireless-brn failed"
     exit 1
