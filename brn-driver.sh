@@ -19,7 +19,7 @@ fi
 
 if [ "x$1" = "xinit" ]; then
   echo "brn-driver"
-  for i in $SUBMODULE; do SI=0; if [ ! -e $SUBMODULE/.git ] && [ $SI -eq 0 ]; then git submodule init; SI=1; fi; done
+  for i in $SUBMODULE; do SI=0; if [ ! -e $i/.git ] && [ $SI -eq 0 ]; then git submodule init; SI=1; fi; done
   git submodule update
   for i in $SUBMODULE; do echo $i; (cd $i; git checkout master); done
   (cd compat-wireless-brn/brn-linux-next; git checkout brn-master)
