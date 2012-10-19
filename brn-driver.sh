@@ -1,5 +1,13 @@
 #!/bin/sh
 
+if [ "x$CPUS" = "x" ]; then
+  if [ -f /proc/cpuinfo ]; then
+    CPUS=`grep -e "^processor" /proc/cpuinfo | wc -l`
+  else
+    CPUS=1
+  fi
+fi
+
 echo "Get submodules"
 SUBMODULE=`git submodule | awk '{print $2}'`
 
@@ -46,7 +54,7 @@ if [ "x$1" = "xbuild-modules" ]; then
     "madwifi")
       if [ -e $KERNELPATH ]; then
         echo "Build $DRIVER for $ARCH"
-        (cd madwifi-brn; make clean; make -j 4 KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
+        (cd madwifi-brn; make clean; make -j $CPUS KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
         if [ ! -e $TARGETDIR ]; then
           mkdir -p $TARGETDIR
         fi
