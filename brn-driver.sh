@@ -54,7 +54,18 @@ if [ "x$1" = "xbuild-modules" ]; then
     "madwifi")
       if [ -e $KERNELPATH ]; then
         echo "Build $DRIVER for $ARCH"
-        (cd madwifi-brn; make clean; make -j $CPUS KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
+
+        if [ -f madwifi-brn/.last_build ]; then
+          . madwifi-brn/.last_build
+        fi
+
+        if [ "x$KERNELPATH" = "x$BUILDKERNEL" ] && [ "x$ARCH" = "x$BUILDARCH" ]; then
+          (cd madwifi-brn; make -j $CPUS KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
+        else
+          (cd madwifi-brn; make clean; make -j $CPUS KERNELPATH=$KERNELPATH ARCH=$ARCH CROSS_COMPILE=$COMPILER_PREFIX)
+          (cd madwifi-brn; echo -e "BUILDKERNEL=$KERNELPATH\nBUILDARCH=$ARCH" > .last_build)
+        fi
+
         if [ ! -e $TARGETDIR ]; then
           mkdir -p $TARGETDIR
         fi
