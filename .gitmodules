@@ -1,21 +1,10 @@
 [submodule "madwifi-brn"]
 	path = madwifi-brn
-	url = git@gitsar:madwifi-brn
+	url = git@github.com:HumboldtWirelessLab/madwifi-brn.git
 [submodule "openbeacon-brn"]
 	path = openbeacon-brn
-	url = git@gitsar:openbeacon-brn
+	url = git@github.com:HumboldtWirelessLab/openbeacon-brn.git
 [submodule "gumstix-brn"]
 	path = gumstix-brn
-	url = git@gitsar:gumstix-brn
-[submodule "calradio-brn"]
-	path = calradio-brn
-	url = git@gitsar:calradio-brn
-[submodule "compat-wireless-brn/brn-compat"]
-	path = compat-wireless-brn/brn-compat
-	url = git@gitsar:brn-compat
-[submodule "compat-wireless-brn/brn-compat-wireless-2.6"]
-	path = compat-wireless-brn/brn-compat-wireless-2.6
-	url = git@gitsar:brn-compat-wireless-2.6
-[submodule "compat-wireless-brn/brn-linux-next"]
-	path = compat-wireless-brn/brn-linux-next
-	url = git@gitsar:brn-linux-next
+	url = git@github.com:HumboldtWirelessLab/gumstix-brn.git
+
